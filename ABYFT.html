@@ -1,0 +1,204 @@
+<link rel="stylesheet" href="ABYFT.css">
+
+<div id="custom-cursor"></div>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="loading-logo">ABYFT</div>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar fade-in">
+  <div class="logo">ABYFT</div>
+  <button class="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="#home">HOME</a>
+    <a href="#collection">COLLECTION</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+  <div class="nav-right">
+    <button class="dark-toggle">DARK MODE</button>
+    <div class="cart-icon">🛒 <span id="cart-count">0</span></div>
+  </div>
+</div>
+
+<!-- FLOATING CART BUTTON -->
+<div class="floating-cart">
+  🛒 <span id="floating-cart-count">0</span>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top">↑</button>
+
+<!-- NEW COLLECTION BANNER -->
+<div class="new-banner">
+  <span>NEW COLLECTION OUT NOW • ABYFT • NEW COLLECTION OUT NOW • ABYFT •</span>
+</div>
+
+<!-- QUICK VIEW POPUP -->
+<div class="quick-view" id="quickView">
+  <div class="quick-view-content">
+    <span id="closeQuickView" class="close-btn">×</span>
+    <img id="qvImg" src="">
+    <h2 id="qvTitle"></h2>
+    <p id="qvPrice"></p>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cart-panel">
+  <h3>CART</h3>
+  <ul id="cart-items"></ul>
+  <button id="go-checkout">GO TO CHECKOUT</button>
+  <button id="close-cart">CLOSE</button>
+</div>
+
+<!-- CHECKOUT SUCCESS -->
+<div id="checkout-success">
+  <div class="success-box">
+    <h2>THANK YOU FOR YOUR ORDER</h2>
+    <p>YOUR ABYFT GEAR IS ON THE WAY.</p>
+    <button id="back-home">BACK TO HOME</button>
+  </div>
+</div>
+
+<header id="home" class="hero fade-in">
+  <h1>WEAR YOUR IDENTITY</h1>
+  <p>MINIMAL, BOLD, TIMELESS. DISCOVER THE NEW ABYFT COLLECTION.</p>
+  <button class="shop-btn">SHOP NOW</button>
+</header>
+
+<!-- PRODUCT DETAIL SECTION -->
+<section id="product-detail" class="product-detail fade-in">
+  <div class="breadcrumb" id="breadcrumb">
+    HOME &gt; COLLECTION &gt; <span id="breadcrumb-product">PRODUCT</span>
+  </div>
+  <h2 class="section-title">PRODUCT DETAILS</h2>
+  <div class="product-detail-content">
+    <img id="detail-img" src="" alt="PRODUCT">
+    <div class="detail-info">
+      <h3 id="detail-title"></h3>
+      <p id="detail-price"></p>
+      <p id="detail-stock">IN STOCK — LIMITED</p>
+
+      <div class="detail-row">
+        <span>SIZE</span>
+        <div class="size-selector" id="size-selector">
+          <button data-size="S">S</button>
+          <button data-size="M">M</button>
+          <button data-size="L">L</button>
+          <button data-size="XL">XL</button>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <span>COLOR</span>
+        <div class="color-selector" id="color-selector">
+          <button data-color="BLACK" class="black"></button>
+          <button data-color="WHITE" class="white"></button>
+          <button data-color="NAVY" class="navy"></button>
+        </div>
+      </div>
+
+      <p id="detail-desc">PREMIUM ABYFT PIECE DESIGNED FOR EVERYDAY WEAR.</p>
+      <button id="detail-add-cart" disabled>SELECT SIZE TO ADD</button>
+    </div>
+  </div>
+</section>
+
+<section id="collection" class="collection fade-in">
+  <h2 class="section-title">FEATURED COLLECTION</h2>
+
+  <div class="products">
+
+    <!-- PRODUCT 1 — ABYFT CAP -->
+    <div class="product-card fade-in parallax-card" data-name="ABYFT CAP" data-price="24.99">
+      <img src="https://i.postimg.cc/TpY62Bcn/trucker-caps-abyft.jpg" alt="ABYFT CAP">
+      <h3>ABYFT CAP</h3>
+      <p>$24.99</p>
+      <button class="quick-view-btn">QUICK VIEW</button>
+      <button class="view-detail-btn">VIEW DETAILS</button>
+      <button class="add-cart-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 2 — ABYFT T-SHIRT -->
+    <div class="product-card fade-in parallax-card" data-name="ABYFT T-SHIRT" data-price="29.99">
+      <img src="https://i.postimg.cc/HVsgWFt5/unisex-oversized-boxy-tee-abyft.jpg" alt="ABYFT T-SHIRT">
+      <h3>ABYFT T-SHIRT</h3>
+      <p>$29.99</p>
+      <button class="quick-view-btn">QUICK VIEW</button>
+      <button class="view-detail-btn">VIEW DETAILS</button>
+      <button class="add-cart-btn">ADD TO CART</button>
+    </div>
+
+    <!-- PRODUCT 3 — ABYFT HOODIE -->
+    <div class="product-card fade-in parallax-card" data-name="ABYFT HOODIE" data-price="59.99">
+      <img src="https://i.postimg.cc/TpY62Bcr/unisex-heavy-blend-hooded-sweatshirt-abyft.jpg" alt="ABYFT HOODIE">
+      <h3>ABYFT HOODIE</h3>
+      <p>$59.99</p>
+      <button class="quick-view-btn">QUICK VIEW</button>
+      <button class="view-detail-btn">VIEW DETAILS</button>
+      <button class="add-cart-btn">ADD TO CART</button>
+    </div>
+
+  </div>
+</section>
+
+<section id="recently-viewed" class="collection fade-in">
+  <h2 class="section-title">RECENTLY VIEWED</h2>
+  <div class="products" id="recently-viewed-list"></div>
+</section>
+
+<section id="recommendations" class="collection fade-in">
+  <h2 class="section-title">YOU MAY ALSO LIKE</h2>
+  <div class="products" id="recommendations-list"></div>
+</section>
+
+<!-- CHECKOUT SECTION -->
+<section id="checkout" class="checkout fade-in">
+  <h2 class="section-title">CHECKOUT</h2>
+  <div class="checkout-content">
+    <div class="checkout-form">
+      <h3>SHIPPING DETAILS</h3>
+      <input type="text" placeholder="FULL NAME">
+      <input type="text" placeholder="ADDRESS">
+      <input type="text" placeholder="CITY">
+      <input type="text" placeholder="COUNTRY">
+      <input type="text" placeholder="POSTAL CODE">
+      <input type="email" placeholder="EMAIL">
+      <button class="place-order-btn">PLACE ORDER</button>
+    </div>
+    <div class="checkout-summary">
+      <h3>ORDER SUMMARY</h3>
+      <ul id="checkout-items"></ul>
+      <p id="checkout-total">TOTAL: $0.00</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about fade-in">
+  <h2 class="section-title">ABOUT ABYFT</h2>
+  <p>
+    ABYFT IS A MODERN CLOTHING BRAND BUILT ON SIMPLICITY AND BOLD EXPRESSION.
+    OUR MISSION IS TO CREATE TIMELESS PIECES THAT ELEVATE YOUR EVERYDAY STYLE.
+  </p>
+</section>
+
+<section id="contact" class="contact fade-in">
+  <h2 class="section-title">CONTACT US</h2>
+  <p>EMAIL: SUPPORT@ABYFT.COM</p>
+</section>
+
+<footer class="fade-in">
+  <p>© 2026 ABYFT — ALL RIGHTS RESERVED</p>
+  <div class="socials">
+    <span>IG</span>
+    <span>TT</span>
+    <span>YT</span>
+  </div>
+</footer>
+
+<script src="ABYFT.js"></script>
