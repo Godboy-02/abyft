@@ -756,7 +756,7 @@ body.dark-mode .hero p {
   flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; /* ensure top alignment */
 }
 
 .checkout-form,
@@ -766,11 +766,12 @@ body.dark-mode .hero p {
   border-radius: 12px;
   width: 300px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 0;              /* fix misalignment */
+  flex: 0 0 320px;        /* keep columns consistent */
 }
 
 /* CENTERED FORM + ROUNDED INPUTS */
 .checkout-form {
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -824,6 +825,43 @@ body.dark-mode .hero p {
 #checkout-total {
   margin-top: 10px;
   font-weight: 700;
+}
+
+/* DISCOUNT BOX (NEW) */
+.discount-box {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.discount-box h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.discount-box input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.discount-box button {
+  width: 100%;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+#discount-message {
+  font-size: 11px;
+  margin-top: 6px;
 }
 
 /* ABOUT + CONTACT */
@@ -891,4 +929,81 @@ footer {
   .product-detail-content {
     flex-direction: column;
   }
+
+  .checkout-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkout-form,
+  .checkout-summary {
+    width: 100%;
+    max-width: 360px;
+    flex: 0 0 auto;
+  }
+}
+
+/* GENERIC SHAKE (NEW – for wrong discount input) */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* GLITCH EFFECT (NEW) */
+@keyframes glitch {
+  0% { opacity: 1; }
+  20% { opacity: 0.2; transform: skewX(10deg); }
+  40% { opacity: 1; transform: skewX(-10deg); }
+  60% { opacity: 0.3; transform: translateX(5px); }
+  80% { opacity: 1; transform: translateX(-5px); }
+  100% { opacity: 1; transform: none; }
+}
+
+.glitch {
+  animation: glitch 0.6s linear;
+}
+
+/* ARCADE OVERLAY (NEW) */
+#arcade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999999;
+}
+
+#arcade-exit {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+#balanceCanvas {
+  width: 90vw;
+  height: 70vh;
+}
+
+#balance-score {
+  color: #fff;
+  font-size: 32px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
 }
