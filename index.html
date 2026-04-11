@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABYFT</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div id="custom-cursor"></div>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="ABYFT.css">
 
 <div id="custom-cursor"></div>
 
@@ -181,6 +169,15 @@
       <input type="text" placeholder="COUNTRY">
       <input type="text" placeholder="POSTAL CODE">
       <input type="email" placeholder="EMAIL">
+
+      <!-- DISCOUNT SECTION (NEW) -->
+      <div class="discount-box">
+        <h3>DISCOUNT CODE</h3>
+        <input type="text" id="discount-input" placeholder="ENTER CODE">
+        <button id="apply-discount">APPLY</button>
+        <p id="discount-message"></p>
+      </div>
+
       <button class="place-order-btn">PLACE ORDER</button>
     </div>
     <div class="checkout-summary">
@@ -213,8 +210,11 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
-<script src="script.js"></script>
+<!-- SECRET ARCADE OVERLAY (NEW) -->
+<div id="arcade-overlay">
+  <div id="arcade-exit">✕</div>
+  <canvas id="balanceCanvas"></canvas>
+  <div id="balance-score">0</div>
+</div>
 
-</body>
-</html>
+<script src="ABYFT.js"></script>
