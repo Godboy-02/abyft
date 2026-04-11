@@ -410,3 +410,149 @@ document.querySelectorAll(".parallax-card").forEach(card => {
     card.style.transform = "translateY(-8px) rotateX(0) rotateY(0)";
   });
 });
+
+/* =========================
+   DISCOUNT SECRET UNLOCK (NEW)
+   ========================= */
+const secretDiscount = "abyftclothesforsale1924";
+const discountInput = document.getElementById("discount-input");
+const applyDiscountBtn = document.getElementById("apply-discount");
+const discountMessage = document.getElementById("discount-message");
+
+if (applyDiscountBtn && discountInput && discountMessage) {
+  applyDiscountBtn.addEventListener("click", () => {
+    const code = discountInput.value.trim().toLowerCase();
+
+    if (code === secretDiscount) {
+      discountMessage.style.color = "lime";
+      discountMessage.textContent = "SECRET ACCESS GRANTED...";
+      discountMessage.classList.add("glitch");
+
+      setTimeout(() => {
+        discountMessage.classList.remove("glitch");
+        openArcade();
+      }, 700);
+    } else {
+      discountMessage.style.color = "red";
+      discountMessage.textContent = "INVALID DISCOUNT CODE";
+      discountInput.classList.add("shake");
+      setTimeout(() => discountInput.classList.remove("shake"), 400);
+    }
+  });
+}
+
+/* =========================
+   KEYBOARD SECRET CODE (NEW)
+   ========================= */
+let typedSecret = "";
+document.addEventListener("keydown", (e) => {
+  const key = e.key.length === 1 ? e.key.toLowerCase() : "";
+  if (!key) return;
+
+  typedSecret += key;
+  if (typedSecret.includes(secretDiscount)) {
+    openArcade();
+    typedSecret = "";
+  }
+  if (typedSecret.length > secretDiscount.length) {
+    typedSecret = typedSecret.slice(-secretDiscount.length);
+  }
+});
+
+/* =========================
+   ARCADE + BALANCE GAME (NEW)
+   ========================= */
+const arcadeOverlay = document.getElementById("arcade-overlay");
+const arcadeExit = document.getElementById("arcade-exit");
+let gameLoop;
+
+function openArcade() {
+  if (!arcadeOverlay) return;
+  arcadeOverlay.style.display = "flex";
+  setTimeout(() => startBalanceGame(), 50);
+}
+
+arcadeExit.addEventListener("click", () => {
+  arcadeOverlay.style.display = "none";
+  if (gameLoop) cancelAnimationFrame(gameLoop);
+});
+
+let canvas, ctx;
+let platformAngle = 0;
+let logoX = 0;
+let logoY = -50;
+let velocityX = 0;
+let velocityY = 0;
+let gravity = 0.2;
+let score = 0;
+
+function startBalanceGame() {
+  canvas = document.getElementById("balanceCanvas");
+  if (!canvas) return;
+  ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  platformAngle = 0;
+  logoX = 0;
+  logoY = -50;
+  velocityX = 0;
+  velocityY = 0;
+  score = 0;
+
+  updateGame();
+}
+
+document.addEventListener("keydown", (e) => {
+  if (!arcadeOverlay || arcadeOverlay.style.display !== "flex") return;
+  if (e.key === "ArrowLeft") platformAngle -= 0.05;
+  if (e.key === "ArrowRight") platformAngle += 0.05;
+});
+
+function updateGame() {
+  if (!ctx || !canvas) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Platform
+  ctx.save();
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.rotate(platformAngle);
+  ctx.fillStyle = "white";
+  ctx.fillRect(-150, 0, 300, 10);
+  ctx.restore();
+
+  // Physics
+  velocityX += Math.sin(platformAngle) * gravity;
+  velocityY += gravity;
+
+  logoX += velocityX;
+  logoY += velocityY;
+
+  // Bounce on platform
+  if (logoY > canvas.height / 2 - 20) {
+    velocityY = -velocityY * 0.3;
+    logoY = canvas.height / 2 - 20;
+  }
+
+  // Logo
+  ctx.fillStyle = "white";
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2 + logoX, canvas.height / 2 + logoY, 20, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Score
+  const scoreEl = document.getElementById("balance-score");
+  score++;
+  if (scoreEl) scoreEl.textContent = score;
+
+  // Game over
+  if (Math.abs(logoX) > canvas.width / 2) {
+    if (scoreEl) scoreEl.textContent = "GAME OVER — SCORE: " + score;
+    return;
+  }
+
+  gameLoop = requestAnimationFrame(updateGame);
+}
